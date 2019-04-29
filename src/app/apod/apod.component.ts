@@ -34,6 +34,11 @@ export class ApodComponent implements OnInit {
 
   getApod(date:string): void
   {
+          //If the date is falsy, use today's date
+    if(!date)
+    {
+      date = new Date().toISOString().slice(0,10);
+    }
 
     this.apodService.getApod(date).subscribe(
       (response:any)=>
