@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
+import { NgApodConfig } from '../../../config/ng-apod.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApodService 
 {
-  constructor() { }
+  constructor(private ngApodConfig: NgApodConfig) { }
 
   getApod(): string
   {
-    return 'Hello World';
+    return this.ngApodConfig.key;
   }
 }
 
