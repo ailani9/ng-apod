@@ -1,3 +1,3 @@
 export class NgApodConfig {
-  key:string = 'xxxxx';
+  key:string = 'h7wHsxX9aJBRAKzK5j1SfkDQjwbC4PdfHahtpzha';
 }

@@ -13,7 +13,11 @@ export class ApodComponent implements OnInit {
 
   ngOnInit() 
   {
-      console.log(this.apodService.getApod());
+    this.apodService.getApod().subscribe(
+      (response:any)=>{
+        console.log(response);
+      }
+    );  
   }
 
 }
