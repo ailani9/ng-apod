@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApodService } from '../api/apod.service';
+import { Apod } from '../models/apod';
 
 @Component({
   selector: 'app-apod',
@@ -9,15 +10,23 @@ import { ApodService } from '../api/apod.service';
 })
 export class ApodComponent implements OnInit {
 
+  apod: Apod;
+
   constructor(private apodService: ApodService) { }
 
-  ngOnInit() 
+  ngOnInit() {
+    this.getApod();
+  }
+
+  getApod(): void
   {
-    this.apodService.getApod().subscribe(
-      (response:any)=>{
-        console.log(response);
+    let date = new Date().toISOString().slice(0,10);
+    this.apodService.getApod(date).subscribe(
+      (response:any)=>
+      {
+        this.apod = response;
       }
-    );  
+    );
   }
 
 }
