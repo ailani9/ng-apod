@@ -15,6 +15,8 @@ import { SafePipeModule } from 'safe-pipe';
 
 // Relative import from the current directory to your PC's file system
 import { NgApodConfig } from '../../config/ng-apod.config';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -26,7 +28,7 @@ import { NgApodConfig } from '../../config/ng-apod.config';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, //import HttpClientModule
-    SafePipeModule //Add the pipe to your list of imports
+    SafePipeModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }) //Add the pipe to your list of imports
   ],
   providers: [
     NgApodConfig, //Add as a provider
