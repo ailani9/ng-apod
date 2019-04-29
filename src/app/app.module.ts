@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 //Import HttpClientModule
 import { HttpClientModule } from '@angular/common/http';
+//Import LocationStrategy, HashLocationStrategy
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +29,9 @@ import { NgApodConfig } from '../../config/ng-apod.config';
     SafePipeModule //Add the pipe to your list of imports
   ],
   providers: [
-    NgApodConfig //Add as a provider
+    NgApodConfig, //Add as a provider
+    //Update your providers list
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
