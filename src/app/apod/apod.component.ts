@@ -12,6 +12,7 @@ import { Apod } from '../models/apod';
 export class ApodComponent implements OnInit {
 
   apod: Apod;
+  date:string;
 
   constructor
   (
@@ -38,12 +39,23 @@ export class ApodComponent implements OnInit {
       (response:any)=>
       {
         this.apod = response;
+         //  Update this.date on each API call
+        this.date = this.randomDate(new Date(1995,5,16), new Date());
 
-        //5. Log the results to the JS console
-        console.log(response);
+        // Log the results to the JS console
+        console.log(this.date);
       }
     );
-
   }
+  randomDate(start, end): string
+  {
+    let date = new Date
+    (
+      start.getTime() + Math.random() *
+        (end.getTime() - start.getTime())
+    );
 
+    return new Date(date).toISOString().slice(0,10);
+  }
+  
 }
